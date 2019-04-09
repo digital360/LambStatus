@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 export const isValidDate = (dateString) => {
   try {
@@ -18,8 +18,8 @@ export const getDateObject = (dateString) => {
   return date
 }
 
-export const formatDateTime = (datetime, fmt = 'MMM D, YYYY, HH:mm UTC') => {
-  return moment(datetime).utc().format(fmt)
+export const formatDateTime = (datetime, fmt = 'MMM D, HH:mm [z]', timezone = 'Melbourne/Australia') => {
+  return moment(datetime).tz(timezone).format(fmt)
 }
 
 export const formatDateTimeInPST = (datetime, fmt = 'MMM D, HH:mm [PST]') => {
