@@ -18,8 +18,14 @@ export const getDateObject = (dateString) => {
   return date
 }
 
-export const formatDateTime = (datetime, fmt = 'MMM D, HH:mm [z]', timezone = 'Melbourne/Australia') => {
-  return moment(datetime).tz(timezone).format(fmt)
+export const formatDateTime = (datetime, fmt = 'MMM D, YYYY, HH:mm UTC', timezone = 'Australia/Melbourne') => {
+  let time
+  if (timezone) {
+    time = moment(datetime).tz(timezone)
+  } else {
+    time = moment(datetime).utc()
+  }
+  return time.format(fmt)
 }
 
 export const formatDateTimeInPST = (datetime, fmt = 'MMM D, HH:mm [PST]') => {
