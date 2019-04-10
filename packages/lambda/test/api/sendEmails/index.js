@@ -191,8 +191,8 @@ describe('sendEmails', () => {
         const endAt = '2018-04-09T01:00:00Z'
         const email = new MaintenanceEmailContent({maintenance: {startAt, endAt}, maintenanceUpdates: [{}]})
         const actual = email.getBody({})
-        assert(actual.includes('Apr 8, 17:00 PST'))
-        assert(actual.includes('Apr 8, 18:00 PST'))
+        assert(actual.includes('Apr 9, 2018, 00:00 UTC'))
+        assert(actual.includes('Apr 9, 2018, 01:00 UTC'))
       })
     })
   })
