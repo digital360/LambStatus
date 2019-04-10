@@ -187,12 +187,12 @@ describe('sendEmails', () => {
       })
 
       it('should include the start and end time', async () => {
-        const startAt = '2018-04-09T00:00:00Z'
-        const endAt = '2018-04-09T01:00:00Z'
+        const startAt = '2018-04-09T05:00:00Z'
+        const endAt = '2018-04-09T12:00:00Z'
         const email = new MaintenanceEmailContent({maintenance: {startAt, endAt}, maintenanceUpdates: [{}]})
         const actual = email.getBody({})
-        assert(actual.includes('Apr 9, 2018, 00:00 UTC'))
-        assert(actual.includes('Apr 9, 2018, 01:00 UTC'))
+        assert(actual.includes('Apr 9, 2018, 15:00 +10:00'))
+        assert(actual.includes('Apr 9, 2018, 22:00 +10:00'))
       })
     })
   })

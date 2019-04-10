@@ -218,7 +218,7 @@ export class IncidentEmailContent extends EmailContent {
   generateContentForNewEvent () {
     const latestUpdate = this.eventUpdates[0]
     return `
-## ${latestUpdate.status} - ${formatDateTime(latestUpdate.createdAt)}
+## ${latestUpdate.status} - ${formatDateTime(latestUpdate.createdAt, 'MMM D, YYYY, HH:mm Z', 'Australia/Melbourne')}
 
 ${latestUpdate.message}
 `
@@ -227,7 +227,7 @@ ${latestUpdate.message}
   generateContentForUpdatedEvent () {
     const latestUpdate = this.eventUpdates[0]
     let text = `
-## New Incident Status: ${latestUpdate.status} - ${formatDateTime(latestUpdate.createdAt)}
+## New Incident Status: ${latestUpdate.status} - ${formatDateTime(latestUpdate.createdAt, 'MMM D, YYYY, HH:mm Z', 'Australia/Melbourne')}
 
 ${latestUpdate.message}
 
@@ -237,7 +237,7 @@ ${latestUpdate.message}
     for (let i = 1; i < this.eventUpdates.length; i++) {
       const update = this.eventUpdates[i]
       text += `
-### ${update.status} - ${formatDateTime(update.createdAt)}
+### ${update.status} - ${formatDateTime(update.createdAt, 'MMM D, YYYY, HH:mm Z', 'Australia/Melbourne')}
 
 ${update.message}
 `
@@ -266,7 +266,7 @@ export class MaintenanceEmailContent extends EmailContent {
     return `
 # ${this.maintenance.name}
 
-*${formatDateTime(this.maintenance.startAt)} - ${formatDateTime(this.maintenance.endAt)}*
+*${formatDateTime(this.maintenance.startAt, 'MMM D, YYYY, HH:mm Z', 'Australia/Melbourne')} - ${formatDateTime(this.maintenance.endAt, 'MMM D, YYYY, HH:mm Z', 'Australia/Melbourne')}*
 `
   }
 
@@ -281,7 +281,7 @@ export class MaintenanceEmailContent extends EmailContent {
   generateContentForNewEvent () {
     const latestUpdate = this.eventUpdates[0]
     return `
-## Maintenance Details - ${formatDateTime(latestUpdate.createdAt)}
+## Maintenance Details - ${formatDateTime(latestUpdate.createdAt, 'MMM D, YYYY, HH:mm Z', 'Australia/Melbourne')}
 
 ${latestUpdate.message}
 `
@@ -290,7 +290,7 @@ ${latestUpdate.message}
   generateContentForUpdatedEvent () {
     const latestUpdate = this.eventUpdates[0]
     let text = `
-## New Maintenance Status: ${latestUpdate.status} - ${formatDateTime(latestUpdate.createdAt)}
+## New Maintenance Status: ${latestUpdate.status} - ${formatDateTime(latestUpdate.createdAt, 'MMM D, YYYY, HH:mm Z', 'Australia/Melbourne')}
 
 ${latestUpdate.message}
 
@@ -300,7 +300,7 @@ ${latestUpdate.message}
     for (let i = 1; i < this.eventUpdates.length; i++) {
       const update = this.eventUpdates[i]
       text += `
-### ${update.status} - ${formatDateTime(update.createdAt)}
+### ${update.status} - ${formatDateTime(update.createdAt, 'MMM D, YYYY, HH:mm Z', 'Australia/Melbourne')}
 
 ${update.message}
 `
