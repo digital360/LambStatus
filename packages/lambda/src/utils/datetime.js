@@ -18,7 +18,7 @@ export const getDateObject = (dateString) => {
   return date
 }
 
-export const formatDateTime = (datetime, fmt = 'MMM D, YYYY, HH:mm UTC', timezone = 'Australia/Melbourne') => {
+export const formatDateTime = (datetime, fmt = 'MMM D, YYYY, HH:mm UTC', timezone = '') => {
   let time
   if (timezone) {
     time = moment(datetime).tz(timezone)
